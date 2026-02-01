@@ -1,3 +1,7 @@
+body{
+    background-color: #FFFEFA;
+}
+
 h1{
     color: #000;
     font-family: "Avantt TRIAL";
@@ -67,6 +71,14 @@ li{
 /*ID definitions*/
 #introduction{
     margin: 0 auto;
-    max-width: 868.664px;
+    max-width: 54rem;
     padding-top: 4rem;
+}
+
+#arrow{
+    margin: 0 auto;
+    max-width: 3rem;
+    padding-top: 2rem;
+    color: #92BE00;
+    font-size: 3rem;
 }
