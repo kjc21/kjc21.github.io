@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=PP+Mori:wght@400;700&display=swap');
+@font-face {
+    font-family: 'PP Mori';
+    src: url('fonts/PPMori-Regular.woff2') format('woff2'),
+         url('fonts/PPMori-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 body{
     background-color: #FFFEFA;
@@ -228,7 +234,7 @@ li{
 
 /* Bar styles */
 .bar {
-    fill: steelblue;
+    fill: #92BE00;
     cursor: pointer;
     transition: fill 0.3s;
 }
