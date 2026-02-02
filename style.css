@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PP+Mori:wght@400;700&display=swap');
+
 body{
     background-color: #FFFEFA;
 }
@@ -179,4 +181,47 @@ li{
     padding-top: 2rem;
     color: #92BE00;
     font-size: 3rem;
+}
+
+/*vis.js styling*/
+ .bar {
+  cursor: pointer;
+  transition: fill 0.3s;
+}
+
+.bar:hover {
+  fill: orange;
+}
+
+.label {
+  font-size: 12px;
+  text-anchor: middle;
+  font-family: "PP Mori";
+}
+
+.x-axis-title {
+  font-size: 14px;
+  fill: #555;
+  text-anchor: middle;
+  font-family: 'PP Mori', sans-serif;
+}
+
+.y-axis-title {
+  font-size: 14px;
+  fill: #555;
+  text-anchor: middle;
+  font-family: 'PP Mori', sans-serif;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'PP Mori', sans-serif;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
