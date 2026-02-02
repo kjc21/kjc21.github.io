@@ -31,19 +31,18 @@ data.forEach((d, i) => {
     rect.setAttribute("height", barHeight);
     rect.classList.add("bar");
 
-    // Tooltip interaction
-    rect.addEventListener("mouseover", (e) => {
-        tooltip.style.opacity = 1;
+    rect.addEventListener("mouseover", () => {
+        tooltip.style.opacity = 1;           // show tooltip
         tooltip.textContent = `Value: ${d.value}`;
     });
 
     rect.addEventListener("mousemove", (e) => {
-        tooltip.style.left = e.pageX + 10 + "px";
-        tooltip.style.top = e.pageY - 25 + "px";
+        tooltip.style.left = e.pageX + 10 + "px";  // horizontal offset
+        tooltip.style.top = e.pageY - 25 + "px";   // vertical offset
     });
 
     rect.addEventListener("mouseout", () => {
-        tooltip.style.opacity = 0;
+        tooltip.style.opacity = 0;           // hide tooltip
     });
 
     svg.appendChild(rect);

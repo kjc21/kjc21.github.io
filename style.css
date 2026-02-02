@@ -214,14 +214,25 @@ li{
 }
 
 .tooltip {
-  position: absolute;
+  position: absolute; /* important! */
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 5px 10px;
   border-radius: 4px;
   font-size: 12px;
   font-family: 'PP Mori', sans-serif;
-  pointer-events: none;
-  opacity: 0;
+  pointer-events: none; /* so it doesn't block mouse events */
+  opacity: 0;           /* hidden by default */
   transition: opacity 0.2s;
+}
+
+/* Bar styles */
+.bar {
+    fill: steelblue;
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+
+.bar:hover {
+    fill: orange;
 }
