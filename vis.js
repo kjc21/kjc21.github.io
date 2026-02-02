@@ -1,4 +1,4 @@
-// Data: X[Day of the week], Y[number of hours of sleep]
+// Bar Grap Data: X[Day of the week], Y[number of hours of sleep]
 const data = [
     { label: "Monday", value: 6},
     { label: "Tuesday", value: 4},
@@ -36,7 +36,7 @@ data.forEach((d, i) => {
     rect.classList.add("bar");
 
     rect.addEventListener("mouseover", () => {
-        tooltip.style.opacity = 1;           // show tooltip
+        tooltip.style.opacity = 1;
         tooltip.textContent = `Hours: ${d.value}`;
     });
 
@@ -46,12 +46,10 @@ data.forEach((d, i) => {
     });
 
     rect.addEventListener("mouseout", () => {
-        tooltip.style.opacity = 0;           // hide tooltip
+        tooltip.style.opacity = 0;
     });
 
     chartSvg.appendChild(rect);
-
-    // X-axis label
     const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     text.setAttribute("x", padding + i * barWidth + barWidth / 2);
     text.setAttribute("y", height - padding + 15);
@@ -62,7 +60,6 @@ data.forEach((d, i) => {
 });
 
 
-// X-axis title
 const xAxisTitle = document.createElementNS("http://www.w3.org/2000/svg", "text");
 xAxisTitle.setAttribute("x", width / 2);
 xAxisTitle.setAttribute("y", height - 5);
@@ -70,7 +67,6 @@ xAxisTitle.textContent = "Days of Week";
 xAxisTitle.classList.add("x-axis-title");
 chartSvg.appendChild(xAxisTitle);
 
-// Y-axis title
 const yAxisTitle = document.createElementNS("http://www.w3.org/2000/svg", "text");
 yAxisTitle.setAttribute("x", -height / 2);
 yAxisTitle.setAttribute("y", 15);
