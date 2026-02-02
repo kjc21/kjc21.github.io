@@ -1,6 +1,4 @@
 # kjc21.github.io
-
-This file should explain the purpose of the website, including what technologies are used and how the site can be navigated.
-
 This website is a portfolio, housing a collection of Kaia's digital visualizations.
-Created using 
+Created using Visual Studio Code (HTML, CSS, and JavaScript) and GitHub.  
+This site is easily navigable, by using the navigation bar found at the top of the screen.
