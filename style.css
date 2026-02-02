@@ -68,6 +68,27 @@ li{
     color: teal;
 }
 
+.info-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 4rem auto;
+  padding: 1rem;
+}
+
+.box{
+  background-color: #EEEEEE;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.box-experience{
+    grid-column: 1 / -1;      /* spans both columns */
+    border: 2px solid #EEEEEE;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
 /*ID definitions*/
 #introduction{
     margin: 0 auto;
