@@ -11,8 +11,11 @@ const data = [
 
 // SVG setup
 const chartSvg = document.getElementById("barChart")
-const width = chartSvg.clientWidth;
-const height = chartSvg.clientHeight;
+
+const vb = chartSvg.viewBox.baseVal;
+const width = vb.width;
+const height = vb.height;
+
 const padding = 40;
 const barWidth = (width - 2 * padding) / data.length;
 const maxValue = Math.max(...data.map(d => d.value));
@@ -20,7 +23,7 @@ const maxValue = Math.max(...data.map(d => d.value));
 // Tooltip
 const tooltip = document.getElementById("tooltip");
 
-// Draw bars and labels
+
 data.forEach((d, i) => {
     const barHeight = (d.value / maxValue) * (height - 2 * padding);
 
@@ -38,8 +41,8 @@ data.forEach((d, i) => {
     });
 
     rect.addEventListener("mousemove", (e) => {
-        tooltip.style.left = e.pageX + 10 + "px";  // horizontal offset
-        tooltip.style.top = e.pageY - 25 + "px";   // vertical offset
+        tooltip.style.left = e.pageX + 10 + "px";
+        tooltip.style.top = e.pageY - 25 + "px";
     });
 
     rect.addEventListener("mouseout", () => {

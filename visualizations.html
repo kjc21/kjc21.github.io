@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A2: Personal Website</title>
     <link rel="stylesheet" href="style.css"/>
+    
 </head>
 
 <body>
@@ -20,16 +21,19 @@
 
     <h1 class="page-title">Visualizations</h1>
 
-    
-    <div id="tooltip" class="tooltip"></div>
-
     <div class="info-grid">
-        <svg id="barChart" width=" 600" height="400"></svg>
-        <div id="tooltip" class="tooltip"></div>
-        <svg id="art" viewBox="0 0 300 200" width="300" height="200"></svg>
+        <section class="box-long">
+            <div id="tooltip" class="tooltip"></div>
+            <svg id="barChart" viewBox="0 0 700 450" preserveAspectRatio="xMidYMid meet" class="chart-svg"></svg>
+        </section>
+        
+        <section class="box">
+            <svg id="art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet" class="art-svg"></svg>
+            <p>Cloud SVG</p>
+        </section>
+        
         <script src="vis.js"></script>
     </div>
-
     
 
     <footer class="contact-footer">

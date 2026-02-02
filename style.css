@@ -243,3 +243,31 @@ li{
   fill: #5260e4;
 }
 
+.chart-svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.art-svg {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+}
+
+
+/*Media Queries for grid sizing*/
+@media (max-width: 600px) {
+
+  h1{
+    font-size: 3rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
