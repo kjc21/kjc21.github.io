@@ -20,7 +20,7 @@ const padding = 40;
 const barWidth = (width - 2 * padding) / data.length;
 const maxValue = Math.max(...data.map(d => d.value));
 
-// Tooltip
+
 const tooltip = document.getElementById("tooltip");
 
 
