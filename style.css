@@ -190,15 +190,6 @@ li{
 }
 
 /*vis.js styling*/
- .bar {
-  cursor: pointer;
-  transition: fill 0.3s;
-}
-
-.bar:hover {
-  fill: orange;
-}
-
 .label {
   font-size: 12px;
   text-anchor: middle;
@@ -221,18 +212,17 @@ li{
 
 .tooltip {
   position: absolute; /* important! */
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
   padding: 5px 10px;
   border-radius: 4px;
   font-size: 12px;
   font-family: 'PP Mori', sans-serif;
-  pointer-events: none; /* so it doesn't block mouse events */
-  opacity: 0;           /* hidden by default */
+  pointer-events: none; 
+  opacity: 0;          
   transition: opacity 0.2s;
 }
 
-/* Bar styles */
 .bar {
     fill: #92BE00;
     cursor: pointer;
@@ -242,3 +232,14 @@ li{
 .bar:hover {
     fill: orange;
 }
+
+
+.art-shape {
+  fill: #b8c6fd;
+  transition: fill 0.3s;
+}
+
+.art-shape:hover {
+  fill: #5260e4;
+}
+
