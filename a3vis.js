@@ -28,12 +28,14 @@ fetchData().then(async (data) => {
     .height(400)
     .toSpec();
 
-    const vlSpec3 = vl
+    //Platform: Mean, Median, Mode
+    const platMean = vl
     .markBar()
     .data(data)
     .encode(
-       vl.y().fieldN("Platform"),
-       vl.x().fieldQ("Platform").aggregate("count")  
+     vl.y().fieldN("Platform").sort({ op: "count", order: "descending" }),
+     vl.x().aggregate("count").type("quantitative").title("Number of Games"),
+     vl.color().value("orange")
     )
     .width("container")
     .height(400)
@@ -41,7 +43,7 @@ fetchData().then(async (data) => {
 
   render("#view", vlSpec);
   render("#view2", vlSpec2);
-  render("#view3", vlSpec3);
+  render("#platformMean", platMean);
 });
 
 async function render(viewID, spec) {

@@ -258,6 +258,28 @@ li{
   display: block;
 }
 
+.var-name{
+margin-bottom: 0rem;
+}
+
+.var-descript{
+ max-width: 40rem;
+}
+
+.data-type{
+  color: rgba(41, 35, 35);
+  font-family: "PP Mori";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0rem;
+}
+
+.var-list{
+  margin-top: 0rem;
+}
+
 
 /*Media Queries for grid sizing*/
 @media (max-width: 37.5rem) {
