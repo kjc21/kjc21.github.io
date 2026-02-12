@@ -28,8 +28,20 @@ fetchData().then(async (data) => {
     .height(400)
     .toSpec();
 
+    const vlSpec3 = vl
+    .markBar()
+    .data(data)
+    .encode(
+       vl.y().fieldN("Platform"),
+       vl.x().fieldQ("Platform").aggregate("count")  
+    )
+    .width("container")
+    .height(400)
+    .toSpec();
+
   render("#view", vlSpec);
   render("#view2", vlSpec2);
+  render("#view3", vlSpec3);
 });
 
 async function render(viewID, spec) {
