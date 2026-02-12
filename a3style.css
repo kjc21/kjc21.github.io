@@ -17,12 +17,29 @@
   font-style: normal;
 }
 
+#publisherMode, #publisherMedian, #publisherMean{
+  width: 100%;
+  height: 100%;
+  max-width: 30rem;
+  font-style: normal;
+}
+
 .chart-three-col-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
+.chart-two-col-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
 .edit{
     color: #ff0000;
+}
+
+.small-spacing{
+  padding-bottom: 2rem;
 }
