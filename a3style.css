@@ -9,8 +9,20 @@
 
 #view,
 #view2,
-#platformMean{
+#platformMode,#platformMean, #platformMedian,
+#genreMode, #genreMean, #genreMedian{
   width: 100%;
   height: 100%;
   max-width: 800px;
+  font-style: normal;
+}
+
+.chart-three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.edit{
+    color: #ff0000;
 }
