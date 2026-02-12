@@ -139,10 +139,10 @@ fetchData().then(async (data) => {
       vl.tooltip([{ field: "Publisher", type: "nominal", title: "Publisher" },{ field: "count", type: "quantitative", title: "Number of Games" }])
     )
     .width("container")
-    .height(300)
+    .height(200)
     .title({
       text:"Top 10 Publishers by Number of Games", 
-      anchor: "middle",
+      anchor: "middle"
 
 
     })
@@ -158,27 +158,23 @@ fetchData().then(async (data) => {
         labelFontSize: 10,
         titleFont: "Helvetica",
         titleFontSize: 14,
-        titleFontWeight: "bold"}}
-      )
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .transform(
       vl.aggregate([{ op: "mean", field: "Global_Sales", as: "meanSales" }]).groupby(["Publisher"]),
-
       vl.window([{ op: "rank", as: "rank" }]).sort([{ field: "meanSales", order: "descending" }]),
-
       vl.filter("datum.rank <= 10")
      )
     .encode(
-
       vl.y().fieldN("Publisher").sort("-x").title("Publisher"),
-      vl.x().fieldQ("meanSales").title("Mean Global Sales (Millions of Untits)"),
+      vl.x().fieldQ("meanSales").title("Mean Global Sales"),
       vl.tooltip([{ field: "Publisher", type: "nominal", title: "Publisher" },
-      { field: "meanSales", type: "quantitative", title: "Mean Sales (Millions)" }
-      ]),
-      
-      vl.color().value("gray")
+      { field: "meanSales", type: "quantitative", title: "Mean Sales (Millions)" }]),
+      vl.color().value("#ff7ddf")
     )
     .width("container")
-    .height(300)
+    .height(200)
     .toSpec();
     
     //PUBLISHER:Median - comparing publishers median sales, more stable/ who is the most consistent
@@ -191,8 +187,9 @@ fetchData().then(async (data) => {
         labelFontSize: 10,
         titleFont: "Helvetica",
         titleFontSize: 14,
-        titleFontWeight: "bold"}}
-      )
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .transform(
        // calculate median global sales per publisher
       vl.aggregate([{ op: "median", field: "Global_Sales", as: "medianSales" }]).groupby(["Publisher"]),
@@ -211,7 +208,7 @@ fetchData().then(async (data) => {
       vl.color().value("#FF5733")
     )
     .width("container")
-    .height(300)
+    .height(200)
     .toSpec();
 
   render("#view", vlSpec);

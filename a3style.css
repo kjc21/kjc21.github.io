@@ -43,3 +43,9 @@
 .small-spacing{
   padding-bottom: 2rem;
 }
+
+.box-{
+  background-color: #EEEEEE;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
