@@ -209,7 +209,26 @@ fetchData().then(async (data) => {
     )
     .width("container")
     .height(200)
+    .toSpec()
+
+    //YEAR: mode - which year had the most game releases 
+    const yrMode = vl
+    .markLine({ point: true })
+    .data(data)
+    .encode(
+      vl.x().fieldT("Year").title("Year"),
+      vl.y().aggregate("count").title("Number of Games Released"),
+      vl.tooltip([
+        { field: "Year", type: "temporal", title: "Year" },
+        { aggregate: "count", title: "Games Released" }
+      ]),
+      vl.color().value("#FF5733")
+    )
+    .width("container")
+    .height(300)
     .toSpec();
+
+    //YEAR: median - year and global sales, which years had the highest median 
 
   render("#view", vlSpec);
   render("#view2", vlSpec2);
@@ -222,6 +241,8 @@ fetchData().then(async (data) => {
   render("#publisherMode", pubMode);
   render("#publisherMedian", pubMedian);
   render("#publisherMean", pubMean);
+  render("#yearMode", yrMode);
+  render("#yearMedian", yrMedian);
 });
 
 async function render(viewID, spec) {
