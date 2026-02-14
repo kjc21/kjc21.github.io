@@ -41,10 +41,23 @@ fetchData().then(async (data) => {
     const platMode = vl
     .markBar()
     .data(data)
+    .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .encode(
      vl.y().fieldN("Platform").sort({ op: "count", order: "descending" }),
      vl.x().aggregate("count").type("quantitative").title("Number of Games Released"),
-     vl.color().value("orange")
+     vl.color().value("#FF5733"),
+     vl.tooltip([
+        { field: "Platform", type: "nominal", title: "Platform" },
+        { aggregate: "count", title: "Games Released" }
+      ])
     )
     .width("container")
     .height(300)
@@ -54,65 +67,123 @@ fetchData().then(async (data) => {
     const platMean = vl
     .markBar()
     .data(data)
+    .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .encode(
         vl.y().fieldN("Platform").sort({ field: "Global_Sales", op: "mean", order: "descending" }),
         vl.x().fieldQ("Global_Sales").aggregate("mean").title("Mean Global Sales (Millions)"),
-        vl.color().value("purple")
+        vl.tooltip([{ field: "Platform", type: "nominal", title: "Platform" },
+      { aggregate:"mean", field:"Global_Sales" ,type: "quantitative", format: ".2f",title: "Mean Sales (Millions)" }]),
+      vl.color().value("#b83011")
     )
     .width("container")
-    .height(400)
+    .height(300)
     .toSpec();
 
     //PLATFORM: Median - comparing median of each platforms sales
     const platMedian = vl
     .markBar()
     .data(data)
+    .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .encode(
         vl.y().fieldN("Platform").sort({ field: "Global_Sales", op: "median", order: "descending" }),
         vl.x().fieldQ("Global_Sales").aggregate("median").title("Median Global Sales (Millions)"), 
-        vl.color().value("gray")
+        vl.tooltip([{ field: "Platform", type: "nominal", title: "Platform" },
+      { aggregate:"median", field:"Global_Sales" ,type: "quantitative", format: ".2f",title: "Median Sales (Millions)" }]),
+        vl.color().value("#721a06")
     )
     .width("container")
-    .height(400)
+    .height(300)
     .toSpec();
 
     //GENRE:Mode - counting which genre, which has the most/ is most common
      const genMode = vl
     .markBar()
     .data(data)
+    .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .encode(
      vl.y().fieldN("Genre").sort({ op: "count", order: "descending" }),
      vl.x().aggregate("count").type("quantitative").title("Number of Games"),
-     vl.color().value("orange")
+      vl.tooltip([
+        { field: "Genre", type: "nominal", title: "Genre" },
+        { aggregate: "count", title: "Games Released" }
+      ]),
+     vl.color().value("#7524f8")
     )
     .width("container")
-    .height(400)
+    .height(300)
     .toSpec();
 
     //GENRE:Mean - comparing genres overall averaged sales, which genre is most popular 
     const genMean = vl
     .markBar()
     .data(data)
+    .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 11,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .encode(
         vl.y().fieldN("Genre").sort({ field: "Global_Sales", op: "mean", order: "descending" }),
         vl.x().fieldQ("Global_Sales").aggregate("mean").title("Mean Global Sales (Millions)"),
-        vl.color().value("purple")
+        vl.tooltip([{ field: "Genre", type: "nominal", title: "Genre" },
+      { aggregate:"mean", field:"Global_Sales" ,type: "quantitative", format: ".2f",title: "Mean Sales (Millions)" }]),
+      
+        vl.color().value("#4d0cb4")
     )
     .width("container")
-    .height(400)
+    .height(300)
     .toSpec();
 
     //GENRE:Median - order genres by median global sales, compare
     const genMedian = vl
     .markBar()
     .data(data)
+    .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 11,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
     .encode(
         vl.y().fieldN("Genre").sort({ field: "Global_Sales", op: "median", order: "descending" }),
         vl.x().fieldQ("Global_Sales").aggregate("median").title("Median Global Sales (Millions)"), 
-        vl.color().value("gray")
+        vl.tooltip([{ field: "Genre", type: "nominal", title: "Genre" },
+      { aggregate:"median", field:"Global_Sales" ,type: "quantitative", format: ".2f",title: "Median Sales (Millions)" }]),
+        vl.color().value("#270461")
     )
     .width("container")
-    .height(400)
+    .height(300)
     .toSpec();
 
     //PUBLISHER:Mode - counting publishers, which releases the most games

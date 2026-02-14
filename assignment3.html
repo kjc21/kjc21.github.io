@@ -51,6 +51,12 @@
     
     <div class="info-grid">
         <section class="box-long">
+            <h2 class="var-name">dataset overview</h2>
+            <h4>videogames_wide.csv</h4>
+            <p>This dataset contains video game sales data that span across various paltforms, genres, regions and publishers. Each row contains data of an individual game's release, and measures the millions of units it sold across North America, Europe, Japan, and other regions. Since this data spans across multiple decades, it allows for an analysis looking deeper into industry trends.</p>
+        </section>
+
+        <section class="box-long">
             <h2 class="var-name">variables + data types</h2>
             <h4>understanding the excel</h4>
             <div class="chart-three-col-grid ">
@@ -90,8 +96,10 @@
         <section class="box-long">
             <h2 class="var-name">Platform [categorical]</h2>
             <h4>gaming platform where games released</h4>
-            <p class="var-descript edit">Most common platform is DS!</p>
-                <div class="chart-three-col-grid">
+            <p>
+              To my surprise, Nintendo's DS is the platform that appears most frequently in the dataset. Comparatively, its mean and median sales place quite low compared to other platforms. This indicates that although the DS is a popular platform, this does not guarantee/ translate to success in the selling of the games created for the platform. 
+            </p>
+                <div class="chart-three-col-grid box">
                     <div id="platformMode"></div>
                     <div id="platformMean"></div>
                     <div id="platformMedian"></div>
@@ -101,8 +109,10 @@
         <section class="box-long">
             <h2 class="var-name">Genre [categorical]</h2>
             <h4>type of video game</h4>
-            <p class="var-descript edit">Most common platform is DS!</p>
-                <div class="chart-three-col-grid">
+            <p>
+              Not as surprising, Action and Sports are the most frequent game genre. This aligns with what I know about the gaming industry from an outsider persepctive, with these genres being more common. Interestingly, when looking at the mean and median genre global sales, Action and Sports are less consistent in sales. Platform being the highest selling genre for both mean and median global sales was quite a surprise!
+            </p>
+                <div class="chart-three-col-grid box">
                     <div id="genreMode"></div>
                     <div id="genreMean"></div>
                     <div id="genreMedian"></div>
@@ -114,18 +124,15 @@
             <h2 class="var-name">Publisher [categorical]</h2>
             <h4>published the game</h4>
             <div class="chart-two-col-grid small-spacing">
-              <p class="edit">When looking at the Publisher Mean and Median, I was confused as these are not the top </p>
-              <div id="publisherMode"></div>
+              <p class="edit">
+                
+              </p>
+              <div id="publisherMode" class="box"></div>
             </div>
-            <div class="chart-two-col-grid">
+            <div class="chart-two-col-grid box">
               <div id="publisherMean"></div>
               <div id="publisherMedian"></div>
             </div>
-        </section>
-
-        <section class="box-long">
-          <h2 class="var-name">Year [temporal]</h2>
-          <h4>when the game was published</h4>
         </section>
 
         <section class="box-long">
