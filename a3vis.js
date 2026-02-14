@@ -206,7 +206,7 @@ fetchData().then(async (data) => {
     .encode(
       vl.y().fieldN("Publisher").sort("-x").title("Publisher").axis({ labelFontSize: 8,labelLimit: 150 }),
       vl.x().fieldQ("count").title("Number of Games Released"),
-      vl.color().value("#96003e"),
+      vl.color().value("#e9ff21"),
       vl.tooltip([{ field: "Publisher", type: "nominal", title: "Publisher" },{ field: "count", type: "quantitative", title: "Number of Games" }])
     )
     .width("container")
@@ -242,7 +242,7 @@ fetchData().then(async (data) => {
       vl.x().fieldQ("meanSales").title("Mean Global Sales"),
       vl.tooltip([{ field: "Publisher", type: "nominal", title: "Publisher" },
       { field: "meanSales", type: "quantitative", title: "Mean Sales (Millions)" }]),
-      vl.color().value("#ff7ddf")
+      vl.color().value("#afc206")
     )
     .width("container")
     .height(200)
@@ -276,7 +276,7 @@ fetchData().then(async (data) => {
       vl.x().fieldQ("medianSales").title("Median Global Sales (Millions)"),
       vl.tooltip([{ field: "Publisher", type: "nominal", title: "Publisher" },
       { field: "medianSales", type: "quantitative", title: "Median Sales (Millions)" }]),
-      vl.color().value("#FF5733")
+      vl.color().value("#646e02")
     )
     .width("container")
     .height(200)
@@ -293,13 +293,14 @@ fetchData().then(async (data) => {
         { field: "Year", type: "temporal", title: "Year" },
         { aggregate: "count", title: "Games Released" }
       ]),
-      vl.color().value("#FF5733")
+      vl.color().value("#e204ff")
     )
     .width("container")
     .height(300)
     .toSpec();
 
-    //YEAR: median - year and global sales, which years had the highest median 
+    //SALES: 
+   
 
   render("#view", vlSpec);
   render("#view2", vlSpec2);
@@ -313,7 +314,6 @@ fetchData().then(async (data) => {
   render("#publisherMedian", pubMedian);
   render("#publisherMean", pubMean);
   render("#yearMode", yrMode);
-  render("#yearMedian", yrMedian);
 });
 
 async function render(viewID, spec) {
