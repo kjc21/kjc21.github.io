@@ -343,7 +343,6 @@ fetchData().then(async (data) => {
     format: ".2f"
   }
 ])
-
    
   )
   .width("container")
@@ -351,6 +350,54 @@ fetchData().then(async (data) => {
   .title("Nintendo DS Global Sales by Genre")
   .toSpec();
    
+  // Vis 1.2 - Which platforms sold the most Platform genre games globally?
+  const platGlobal = vl
+  .markBar()
+  .data(data)
+  .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
+  .transform(
+    vl.filter("datum.Genre === 'Platform'")
+  )
+
+  .encode(
+    vl.x()
+      .fieldN("Platform")
+      .title("Gaming Platform")
+      .sort("-y"),
+
+    vl.y()
+      .aggregate("sum")
+      .fieldQ("Global_Sales")
+      .title("Total Global Sales (in Millions)"),
+
+    vl.color()
+      .value("#00d358"),
+
+    vl.tooltip([
+  { field: "Platform", type: "nominal", title: "Platform" },
+  {
+    field: "Global_Sales",
+    type: "quantitative",
+    aggregate: "sum",
+    title: "Total Global Sales (in Millions)",
+    format: ".2f"
+  }
+])
+   
+  )
+  .width("container")
+  .height(300)
+  .title("Nintendo DS Global Sales by Genre")
+  .toSpec();
+
 
   render("#view", vlSpec);
   render("#view2", vlSpec2);
@@ -365,6 +412,7 @@ fetchData().then(async (data) => {
   render("#publisherMean", pubMean);
   render("#yearMode", yrMode);
   render("#dsGenre", DSGenre);
+  render("#platformGlobal", platGlobal);
 });
 
 async function render(viewID, spec) {
