@@ -56,6 +56,7 @@ h5{
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    margin-bottom: 0.5rem;
 }
 
 p{
@@ -280,6 +281,7 @@ margin-bottom: 0rem;
 .var-descript{
  max-width: 40rem;
 }
+
 
 .data-type{
   color: rgba(41, 35, 35);
