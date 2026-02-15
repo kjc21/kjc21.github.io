@@ -49,6 +49,15 @@ h4{
     margin-top: 0rem;
 }
 
+h5{
+    color: rgb(41, 35, 35);
+    font-family: "PP Mori";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
 p{
     color: #292323;
     font-family: "PP Mori";
@@ -87,6 +96,12 @@ li{
   background-color: #EEEEEE;
   padding: 2rem;
   border-radius: 0.5rem;
+}
+
+.box-short{
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
 }
 
 .box-long{

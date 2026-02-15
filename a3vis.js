@@ -300,6 +300,56 @@ fetchData().then(async (data) => {
     .toSpec();
 
     //SALES: 
+
+
+    //Global Sales by Genre and Platform
+    // Vis 1.1 - Which genre of Nintendo DS games is the most globally successful?
+   const DSGenre = vl
+  .markBar()
+  .data(data)
+  .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
+  .transform(
+    vl.filter("datum.Platform === 'DS'")
+  )
+  .encode(
+    vl.x()
+      .fieldN("Genre")
+      .title("Game Genre")
+      .sort("-y"),
+
+    vl.y()
+      .aggregate("sum")
+      .fieldQ("Global_Sales")
+      .title("Total Global Sales (in Millions)"),
+
+    vl.color()
+      .value("#00d358"),
+
+    vl.tooltip([
+  { field: "Genre", type: "nominal", title: "Genre" },
+  {
+    field: "Global_Sales",
+    type: "quantitative",
+    aggregate: "sum",
+    title: "Total Global Sales (in Millions)",
+    format: ".2f"
+  }
+])
+
+   
+  )
+  .width("container")
+  .height(300)
+  .title("Nintendo DS Global Sales by Genre")
+  .toSpec();
    
 
   render("#view", vlSpec);
@@ -314,6 +364,7 @@ fetchData().then(async (data) => {
   render("#publisherMedian", pubMedian);
   render("#publisherMean", pubMean);
   render("#yearMode", yrMode);
+  render("#dsGenre", DSGenre);
 });
 
 async function render(viewID, spec) {
