@@ -471,28 +471,28 @@ const genSalesTime = vl
   .title("Regional Sales by Platform")
   .toSpec();
 
-  //Viz 3.2 - Which platforms perform best in different regions (NA, EU, JP, Other)
+  //Viz 3.2 - Which genres perform best in different regions (NA, EU, JP, Other)
    const regSalesGenre = vl
   .markBar({tooltip: true})
   .data(data)
   .transform(
     vl.fold(["NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales"]).as("Region", "Sales"),
-    vl.aggregate([{ op: "sum", field: "Sales", as: "Total_Sales" }]).groupby(["Platform", "Region"])
+    vl.aggregate([{ op: "sum", field: "Sales", as: "Total_Sales" }]).groupby(["Genre", "Region"])
   )
 
   .encode(
-     vl.x().fieldN("Platform").title("Platform"),
+     vl.x().fieldN("Genre").title("Genre"),
     vl.y().fieldN("Region").title("Region"),
     vl.color().fieldQ("Total_Sales").title("Total Sales (Millions)").scale({ scheme: "greens" }),
     vl.tooltip([
-      { field: "Platform", type: "nominal", title: "Platform" },
+      { field: "Genre", type: "nominal", title: "Genre" },
       { field: "Region", type: "nominal", title: "Region" },
       { field: "Total_Sales", type: "quantitative", title: "Total Sales (Millions)", format: ".2f" }
     ])
   )
   .width("container")
   .height(550)
-  .title("Regional Sales by Platform")
+  .title("Regional Sales by Genre")
   .toSpec();
 
 
