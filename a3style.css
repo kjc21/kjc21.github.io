@@ -24,7 +24,7 @@
   font-style: normal;
 }
 
-#regionalSalesPlatform{
+#regionalSalesPlatform, #regionalSalesGenre{
   width: 100%;
   height: 100%;
   max-width: 70rem;

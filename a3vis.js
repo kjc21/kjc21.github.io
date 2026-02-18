@@ -471,6 +471,31 @@ const genSalesTime = vl
   .title("Regional Sales by Platform")
   .toSpec();
 
+  //Viz 3.2 - Which platforms perform best in different regions (NA, EU, JP, Other)
+   const regSalesGenre = vl
+  .markBar({tooltip: true})
+  .data(data)
+  .transform(
+    vl.fold(["NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales"]).as("Region", "Sales"),
+    vl.aggregate([{ op: "sum", field: "Sales", as: "Total_Sales" }]).groupby(["Platform", "Region"])
+  )
+
+  .encode(
+     vl.x().fieldN("Platform").title("Platform"),
+    vl.y().fieldN("Region").title("Region"),
+    vl.color().fieldQ("Total_Sales").title("Total Sales (Millions)").scale({ scheme: "greens" }),
+    vl.tooltip([
+      { field: "Platform", type: "nominal", title: "Platform" },
+      { field: "Region", type: "nominal", title: "Region" },
+      { field: "Total_Sales", type: "quantitative", title: "Total Sales (Millions)", format: ".2f" }
+    ])
+  )
+  .width("container")
+  .height(550)
+  .title("Regional Sales by Platform")
+  .toSpec();
+
+
 
 
   render("#platformMode", platMode);
@@ -488,6 +513,7 @@ const genSalesTime = vl
   render("#platformSalesTime", platSalesTime);
   render("#genreSalesTime", genSalesTime);
   render("#regionalSalesPlatform", regSalesPlatform);
+  render("#regionalSalesGenre", regSalesGenre);
 });
 
 async function render(viewID, spec) {
