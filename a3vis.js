@@ -398,6 +398,41 @@ fetchData().then(async (data) => {
   .title("Nintendo DS Global Sales by Genre")
   .toSpec();
 
+//Sales Over Time by Platform and Genre
+// Vis 2.1 - How has global game sales changed over time across major platforms (major platforms = top 5 based on count/ number of games released)
+  const platSalesTime = vl
+  .markLine({point:false})
+  .data(data)
+  .transform(
+    vl.filter("datum.Platform === 'DS' || datum.Platform === 'PS2'|| datum.Platform === 'PS3'|| datum.Platform === 'Wii'|| datum.Platform === 'X360'")
+  )
+  .encode(
+    vl.x().fieldT("Year").title("Release Year"),
+    vl.y().fieldQ("Global_Sales").aggregate("sum").title("Total Global Sales (in Millions)"),
+    vl.color().fieldN("Platform").title("Platform"),
+    vl.tooltip([
+      { field: "Year", type: "temporal", title: "Year" }, 
+      { field: "Platform", type: "nominal", title: "Platform" },
+      {
+        field: "Global_Sales",
+        type: "quantitative",
+        aggregate: "sum",
+        title: "Total Global Sales (in Millions)",
+        format: ".2f"
+      }
+    ])
+  )
+
+  .width("container")
+  .height(300)
+  .title("Global Game Sales Over Time by Platform")
+  .toSpec();
+
+// Vis 2.2 - How have global sales trends changed across genres over time?
+
+
+
+
 
   render("#view", vlSpec);
   render("#view2", vlSpec2);
@@ -413,6 +448,8 @@ fetchData().then(async (data) => {
   render("#yearMode", yrMode);
   render("#dsGenre", DSGenre);
   render("#platformGlobal", platGlobal);
+  render("#platformSalesTime", platSalesTime);
+  render("#genreSalesTime", genSalesTime);
 });
 
 async function render(viewID, spec) {
