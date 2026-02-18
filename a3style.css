@@ -6,7 +6,6 @@
   width: 50%;
 }
 
-
 #view,
 #view2,
 #platformMode,#platformMean, #platformMedian,
@@ -18,11 +17,20 @@
 }
 
 #publisherMode, #publisherMedian, #publisherMean,
-#yearMode, #yearMedian, #dsGenre, #platformGlobal, #platformSalesTime, #genreSalesTime{
+#yearMode, #yearMedian, #dsGenre, #platformGlobal, #platformSalesTime, #genreSalesTime, #regionalSalesPlatform{
   width: 100%;
   height: 100%;
   max-width: 30rem;
   font-style: normal;
+}
+
+#regionalSalesPlatform{
+  width: 100%;
+  height: 100%;
+  max-width: 70rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
 }
 
 .chart-three-col-grid {

@@ -7,35 +7,6 @@ async function fetchData() {
 
 
 fetchData().then(async (data) => {
-  const vlSpec = vl
-    .markBar()
-    .data(data)
-    .config({
-        font: "Inter",
-        axis: {
-            labelFontSize: 11,
-            titleFontSize: 13
-        }
-        })
-    .encode(
-      vl.y().fieldN("Platform").sort("-x"),
-      vl.x().fieldQ("Global_Sales").aggregate("sum")
-    )
-    .width("container")
-    .height(200)
-    .toSpec();
-
-  const vlSpec2 = vl
-    .markBar()
-    .data(data)
-    .encode(
-      vl.y().fieldN("Genre").sort("-x"),
-      vl.x().fieldQ("Global_Sales").aggregate("sum"),
-      vl.color().value("teal")
-    )
-    .width("container")
-    .height(200)
-    .toSpec();
 
     //PLATFORM: Mode - counting which platform has the most releases 
     const platMode = vl
@@ -403,6 +374,15 @@ fetchData().then(async (data) => {
   const platSalesTime = vl
   .markLine({point:false})
   .data(data)
+  .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
   .transform(
     vl.filter("datum.Platform === 'DS' || datum.Platform === 'PS2'|| datum.Platform === 'PS3'|| datum.Platform === 'Wii'|| datum.Platform === 'X360'")
   )
@@ -429,13 +409,70 @@ fetchData().then(async (data) => {
   .toSpec();
 
 // Vis 2.2 - How have global sales trends changed across genres over time?
+const genSalesTime = vl
+  .markArea({ interpolate: "monotone" })
+  .data(data)
+  .config(
+      {axis: {
+        labelFont: "Helvetica",
+        labelFontSize: 10,
+        titleFont: "Helvetica",
+        titleFontSize: 14,
+        titleFontWeight: "bold",
+        background: "#ffffff"
+      }})
+  .transform(
+    vl.filter("datum.Genre === 'Action' || datum.Genre === 'Sports' || datum.Genre === 'Misc' || datum.Genre === 'Role-Playing'|| datum.Genre === 'Shooter'")
+  )
+  .encode(
+    vl.x().fieldT("Year").title("Release Year"),
+    vl.y().fieldQ("Global_Sales").aggregate("sum").title("Total Global Sales (in Millions)"),
+    vl.color().fieldN("Genre").title("Genre"),
+    vl.tooltip([
+      { field: "Year", type: "temporal", title: "Year" }, 
+      { field: "Genre", type: "nominal", title: "Genre" },
+      {
+        field: "Global_Sales",
+        type: "quantitative",
+        aggregate: "sum",
+        title: "Total Global Sales (in Millions)",
+        format: ".2f"
+      }
+    ])
+  )
+
+  .width("container")
+  .height(300)
+  .title("Global Game Sales Over Time by Genre")
+  .toSpec();
+
+//Regional Sales vs. Platform
+  //Viz 3.1 - Which platforms perform best in different regions (NA, EU, JP, Other)
+  const regSalesPlatform = vl
+  .markBar({tooltip: true})
+  .data(data)
+  .transform(
+    vl.fold(["NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales"]).as("Region", "Sales"),
+    vl.aggregate([{ op: "sum", field: "Sales", as: "Total_Sales" }]).groupby(["Platform", "Region"])
+  )
+
+  .encode(
+     vl.x().fieldN("Platform").title("Platform"),
+    vl.y().fieldN("Region").title("Region"),
+    vl.color().fieldQ("Total_Sales").title("Total Sales (Millions)").scale({ scheme: "greens" }),
+    vl.tooltip([
+      { field: "Platform", type: "nominal", title: "Platform" },
+      { field: "Region", type: "nominal", title: "Region" },
+      { field: "Total_Sales", type: "quantitative", title: "Total Sales (Millions)", format: ".2f" }
+    ])
+  )
+  .width("container")
+  .height(550)
+  .title("Regional Sales by Platform")
+  .toSpec();
 
 
 
-
-
-  render("#view", vlSpec);
-  render("#view2", vlSpec2);
   render("#platformMode", platMode);
   render("#platformMean", platMean);
   render("#platformMedian", platMedian);
@@ -450,6 +487,7 @@ fetchData().then(async (data) => {
   render("#platformGlobal", platGlobal);
   render("#platformSalesTime", platSalesTime);
   render("#genreSalesTime", genSalesTime);
+  render("#regionalSalesPlatform", regSalesPlatform);
 });
 
 async function render(viewID, spec) {
