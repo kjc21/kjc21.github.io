@@ -495,7 +495,53 @@ const genSalesTime = vl
   .title("Regional Sales by Genre")
   .toSpec();
 
+  //My Narrative - Looking deeper into Japan Region and its trends
+  //Viz 4.1 - How do Nintendo-published games perform by genre in Japan?
+  const ninJPGenres = vl
+  .markBar()
+  .data(data)
+  .transform(
+    vl.filter("datum.Publisher === 'Nintendo'"),
+    vl.filter("datum.JP_Sales > 0")
+  )
 
+  .encode(
+    vl.x().fieldN("Genre").sort("-y").title("Genre"),
+    vl.y().fieldQ("JP_Sales").aggregate("sum").title("Total Sales in Japan (Millions)"),
+    vl.color().fieldN("Genre").legend(null),
+    vl.tooltip([
+      { field: "Genre", type: "nominal", title: "Genre" },
+      { field: "JP_Sales", aggregate: "sum" ,type: "quantitative", title: "Total JP Sales (Millions)", format: ".2f"}
+    ])
+  )
+
+  .width("container")
+  .height(350)
+  .title("Nintendo Games Sales by Genre in Japan")
+  .toSpec();
+
+  //Viz 4.2 - How do Nintendoplatforms perform by in Japan?
+  const ninJPPlatform = vl
+  .markBar()
+  .data(data)
+  .transform(
+    vl.filter("datum.Publisher === 'Nintendo'"),
+    vl.filter("datum.JP_Sales > 0")
+  )
+
+  .encode(
+    vl.x().fieldN("Platform").sort("-y").title("Platform"),
+    vl.y().fieldQ("JP_Sales").aggregate("sum").title("Total Sales in Japan (Millions)"),
+    vl.color().value("#E60012"),
+    vl.tooltip([
+      { field: "Platform", type: "nominal", title: "Platform" },
+      { field: "JP_Sales", aggregate: "sum" ,type: "quantitative", title: "Total JP Sales (Millions)", format: ".2f"}
+    ])
+   )
+  .width("container")
+  .height(380)
+  .title("Nintendo Game Sales by Platform in Japan")
+  .toSpec();
 
 
   render("#platformMode", platMode);
@@ -514,6 +560,8 @@ const genSalesTime = vl
   render("#genreSalesTime", genSalesTime);
   render("#regionalSalesPlatform", regSalesPlatform);
   render("#regionalSalesGenre", regSalesGenre);
+  render("#nintendoJPSales", ninJPGenres);
+  render("#nintendoJPPlatform", ninJPPlatform);
 });
 
 async function render(viewID, spec) {
