@@ -366,7 +366,7 @@ fetchData().then(async (data) => {
   )
   .width("container")
   .height(300)
-  .title("Nintendo DS Global Sales by Genre")
+  .title("Platform Game Sales by Platforms")
   .toSpec();
 
 //Sales Over Time by Platform and Genre
