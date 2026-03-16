@@ -311,3 +311,20 @@ margin-bottom: 0rem;
   }
 }
 
+/*styles for clickCircles - D3 assignment*/
+.clear-button {
+  font-family: "PP Mori";
+  font-size: 0.9rem;
+  padding: 0.5rem 1.25rem;
+  background-color: #FFFEFA;
+  border: 1px solid #292323;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.clear-button:hover {
+  background-color: #92BE00;
+  color: #000;
+  border-color: #92BE00;
+}
